@@ -35,10 +35,13 @@ public class ArrowContoller : MonoBehaviour
         {
             Debug.Log("ok");
             //監督スクリプトにプレイヤーと衝突したことを伝える
-            GameDirector director = GameObject.FindObjectOfType<GameDirector>();
+            GameDirector director = GameObject.FindObjectOfType<GameDirector>(); //作ったクラスを探しに行っている
             director.DecreaseHp();
             // GameObject director = GameObject.Find("GameDirector");
             // director.GetComponent<GameDirector>().DecreaseHp();
+            //効果音再生
+            GetComponent<AudioSource>().Play();
+
 
             //衝突した場合は矢を消す
             Destroy(gameObject);
