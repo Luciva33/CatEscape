@@ -15,7 +15,7 @@ public class ArrowContoller : MonoBehaviour
     void Update()
     {
         //フレームごとに等速で落下させる
-        transform.Translate(0, -0.1f, 0);
+        transform.Translate(0, -0.3f, 0);
 
         //画面外にでたらオブジェクトを破壊する
         if (transform.position.y < -14.0f)
@@ -35,13 +35,21 @@ public class ArrowContoller : MonoBehaviour
         {
             Debug.Log("ok");
             //監督スクリプトにプレイヤーと衝突したことを伝える
-            GameDirector director = GameObject.FindObjectOfType<GameDirector>();
+            GameDirector director = GameObject.FindObjectOfType<GameDirector>(); //作ったクラスを探しに行っている
             director.DecreaseHp();
             // GameObject director = GameObject.Find("GameDirector");
             // director.GetComponent<GameDirector>().DecreaseHp();
+            //効果音再生
+            GetComponent<AudioSource>().Play();
+
 
             //衝突した場合は矢を消す
             Destroy(gameObject);
+        }
+        //  タイムスケールを0にしてArrowContollerを止めるが、update()が止まってるわけではないから更新し続ける
+        if (Time.timeScale <= 0f)
+        {
+            this.enabled = false;  //スクリプト自体を無効にする
         }
 
     }

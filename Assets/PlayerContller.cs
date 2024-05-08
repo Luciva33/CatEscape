@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerContller : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,12 @@ public class PlayerContller : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < 20)
         {
             transform.Translate(6 * Time.deltaTime, 0, 0);//右に3動かす
+        }
+
+        if (Time.timeScale <= 0f)
+        {
+            this.enabled = false;
+
         }
 
     }
