@@ -14,16 +14,28 @@ public class PlayerContller : MonoBehaviour
     void Update()
     {
         //左右が押された時
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x > -20)
         {
-            transform.Translate(-3, 0, 0);//左に3動かす
+            transform.Translate(-6 * Time.deltaTime, 0, 0);//左に3動かす
         }
 
         //右が押された時
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) && transform.position.x < 20)
         {
-            transform.Translate(3, 0, 0);//右に3動かす
+            transform.Translate(6 * Time.deltaTime, 0, 0);//右に3動かす
         }
 
     }
+
+    public void LButtonDown()
+    {
+        transform.Translate(-6, 0, 0);
+    }
+
+    public void RButtonDown()
+    {
+        transform.Translate(6, 0, 0);
+    }
+
+
 }

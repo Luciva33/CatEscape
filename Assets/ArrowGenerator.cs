@@ -16,8 +16,8 @@ public class ArrowGenerator : MonoBehaviour
         {
             this.delta = 0;
             GameObject go = Instantiate(arrowPrefab);
-            int px = Random.Range(-20, 20);  //　以上、未満
-            go.transform.position = new Vector3(px, 7, 0);
+            int px = Random.Range(-40, 40);  //　以上、未満
+            go.transform.position = new Vector3(px, 14, 0);
         }
     }
 }
