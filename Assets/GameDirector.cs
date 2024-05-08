@@ -14,6 +14,7 @@ public class GameDirector : MonoBehaviour
 
     public void DecreaseHp()
     {
+        Debug.Log("dc");
         this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
     }
 }
