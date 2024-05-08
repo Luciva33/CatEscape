@@ -17,6 +17,11 @@ public class GameDirector : MonoBehaviour
         // Debug.Log("dc");
         // this.hpGauge.GetComponent<Image>().fillAmount -= 0.1f;
         this.hpGauge.fillAmount -= 0.1f;
+        if (this.hpGauge.fillAmount <= 0)
+        {
+            Debug.Log("gameover");
+            Time.timeScale = 0f;  //タイムスケールを止める
+        }
 
     }
 }
