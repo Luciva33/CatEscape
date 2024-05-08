@@ -18,7 +18,7 @@ public class ArrowContoller : MonoBehaviour
         transform.Translate(0, -0.1f, 0);
 
         //画面外にでたらオブジェクトを破壊する
-        if (transform.position.y < -5.0f)
+        if (transform.position.y < -7.0f)
         {
             Destroy(gameObject);  //破壊処理しないと、どこまでも落下していく
         }
@@ -28,11 +28,15 @@ public class ArrowContoller : MonoBehaviour
         Vector2 p2 = this.player.transform.position;    //プレイヤの中心座標
         Vector2 dir = p1 - p2;
         float d = dir.magnitude;
-        float r1 = 0.5f;    //矢の半径
-        float r2 = 1.0f;    //プレイヤの半径
+        float r1 = 1.0f;    //矢の半径
+        float r2 = 2.0f;    //プレイヤの半径
 
         if (d < r1 + r2)
         {
+            //監督スクリプトにプレイヤーと衝突したことを伝える
+            GameObject director = GameObject.Find("GameDirector");
+            director.GetComponent<GameDirector>().DecreaseHp();
+
             //衝突した場合は矢を消す
             Destroy(gameObject);
         }
